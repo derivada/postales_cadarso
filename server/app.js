@@ -11,7 +11,9 @@ const app = express()
 
 // Express and enable CORS
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: "http://127.0.0.1:3000" // TODO: change to ENV, this should be the client URL
+}))
 
 // Parse body of requests to JSON
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,12 +26,6 @@ app.use('/user', users)
 // Connect to DB
 const db_access = require('./db/conn')
 
-
-users.stack.forEach(function(r){
-    if (r.route && r.route.path){
-        console.log(r.route.path)
-    }
-})
 
 // Setup server
 app.listen(port, () => {

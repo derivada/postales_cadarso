@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 const validator = require('validator');
 
 require('dotenv').config({ path: __dirname + '/.env' })
-const connectionString = process.env.ATLAS_URI.replace('<password>', process.env.ATLAS_PWD);
+const connectionString = process.env.DB_URI.replace('<password>', process.env.DB_PWD);
 
 const userSchema = new mongoose.Schema({
   name: {
