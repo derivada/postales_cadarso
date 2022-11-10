@@ -7,7 +7,6 @@ import React, {Component} from "react";
 import Postal from './../postal/postal';
 
 class ListaPostales extends Component {
-
     constructor(props) {
         super(props);
         this.abrirPostal = this.abrirPostal.bind(this)
@@ -29,8 +28,23 @@ class ListaPostales extends Component {
     }
 
     componentDidMount(){
+        let a = 123
         // TODO backend call para conseguir lista de usuarios
+        fetch('http://localhost:3001/user/list',
+        {
+            method: 'POST',
+            mode: 'cors'
+        })
+        .then((response) => {
+            if (!response.ok) {
+              throw new Error('No se recibió un código de respuesta adecuado');
+            }
+            console.log(response)
+        }).catch((error) => {
+            console.error('Error al obtener la lista de usuarios:', error);
+        });
         
+
     }
     
     abrirPostal(id) {
