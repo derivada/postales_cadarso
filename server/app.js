@@ -1,4 +1,3 @@
-const http = require('http');
 const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -12,7 +11,7 @@ const app = express()
 // Express and enable CORS
 app.use(express.json())
 app.use(cors({
-    origin: "http://127.0.0.1:3000" // TODO: change to ENV, this should be the client URL
+    origin: '*' // TODO: change to ENV, this should be the client URL
 }))
 
 // Parse body of requests to JSON

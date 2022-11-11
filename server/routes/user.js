@@ -7,7 +7,7 @@ router.route('/list').get(async (req, res) => {
   // Get the user list from DB
   const users = await db.find(
     {},
-    { name: 1, opened: 1 })
+    { _id: 1, name: 1, opened: 1 })
     .exec();
   res.json(users)
 })

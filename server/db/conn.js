@@ -9,6 +9,10 @@ require('dotenv').config({ path: __dirname + '/.env' })
 const connectionString = process.env.DB_URI.replace('<password>', process.env.DB_PWD);
 
 const userSchema = new mongoose.Schema({
+  _id: {
+    type: Number,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
