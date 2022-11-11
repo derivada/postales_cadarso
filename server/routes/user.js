@@ -13,7 +13,17 @@ router.route('/list').get(async (req, res) => {
 })
 
 router.route('/register').post(async (req, res) => {
-  // Set the email of the user in DB
+
+  // 1. Validar request y correo (TODO)
+  let {correo, usuario} = req.body
+
+  // 2. Guardar en la base de datos
+  const query_result = await db.updateOne({ _id: usuario }, {email: correo})
+  console.log(`Registrado el correo de ${query_result.modifiedCount} usuario`)
+  // 3. Notificar al usuario (responder al POST)
+  res.json({success: true})
+
+  // 4. Preparar y enviar correo (TODO)
 
 })
 
