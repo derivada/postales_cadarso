@@ -5,9 +5,11 @@
 
 import React, { Component } from "react";
 import Postal from "./../postal/postal";
+import BarraBusqueda from "../barra_busqueda/barra_busqueda";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { removeAccents } from "./../../utils"
 
 class ListaPostales extends Component {
   constructor(props) {
@@ -15,10 +17,12 @@ class ListaPostales extends Component {
     this.abrirDialogoCorreo = this.abrirDialogoCorreo.bind(this)
     this.cerrarDialogoCorreo = this.cerrarDialogoCorreo.bind(this)
     this.enviarCorreo = this.enviarCorreo.bind(this)
+    this.filtrarListaPostales = this.filtrarListaPostales.bind(this)
   }
 
   state = {
     usuarios: [],
+    usuariosFiltrados: [],
     modalCorreoAbierta: false,
     usuarioModalCorreo: null,
     inputCorreo: null,
@@ -45,11 +49,22 @@ class ListaPostales extends Component {
         }
         this.setState({
           usuarios: usuarios,
+          usuariosFiltrados: usuarios
         });
       })
       .catch((error) => {
         console.error("Error al obtener la lista de usuarios:", error);
       });
+  }
+
+  filtrarListaPostales = (e) => {
+      const str = removeAccents(e.target.value).replaceAll(' ', '')
+      const filtrados = this.state.usuarios.filter(usuario => removeAccents(usuario.nombre.toLowerCase())
+      .replaceAll(' ', '')
+      .includes(str))
+      this.setState({
+        usuariosFiltrados: filtrados
+      })
   }
 
   abrirDialogoCorreo(id) {
@@ -94,8 +109,9 @@ class ListaPostales extends Component {
   render() {
     return (
       <div className="container my-5">
-        <div className="row">
-          {this.state.usuarios.map((usuario) => (
+        <BarraBusqueda onSearch={this.filtrarListaPostales} placeholder="Buscar postales"/>
+        <div className="row" id="postales">
+          {this.state.usuariosFiltrados.map((usuario) => (
             <Postal
               key={"postal" + usuario.id}
               usuario={usuario}
