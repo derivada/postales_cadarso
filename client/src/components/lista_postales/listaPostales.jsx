@@ -4,12 +4,12 @@
  */
 
 import React, { Component } from "react";
-import Postal from "./../postal/postal";
+import PostalCard from "./../postal/postalCard";
 import BarraBusqueda from "../barra_busqueda/barra_busqueda";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { removeAccents } from "./../../utils"
+import { removeAccents } from "../../utils"
 
 class ListaPostales extends Component {
   constructor(props) {
@@ -112,7 +112,7 @@ class ListaPostales extends Component {
         <BarraBusqueda onSearch={this.filtrarListaPostales} placeholder="Buscar postales"/>
         <div className="row" id="postales">
           {this.state.usuariosFiltrados.map((usuario) => (
-            <Postal
+            <PostalCard
               key={"postal" + usuario.id}
               usuario={usuario}
               modalCorreo={this.abrirDialogoCorreo}

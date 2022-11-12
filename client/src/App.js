@@ -1,9 +1,17 @@
-
-import ListaPostales from './components/lista_postales/lista_postales'
+import React from "react"; 
+import ListaPostales from './components/lista_postales/listaPostales'
+import {Home} from './pages/Home'
+import {Postal} from './pages/Postal'
+import {NotFound} from './pages/NotFound'
+import {Route, Routes} from 'react-router-dom'
 
 function App() {
   return (
-    <ListaPostales/>
+    <Routes>
+      <Route path = "/" element={<Home/>}/>
+      <Route path = "/postal/:key" element={<Postal/>}/>
+      <Route path = "*" element={<NotFound/>}/>
+    </Routes>
   );
 }
 
