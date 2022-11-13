@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config({path: __dirname + '/.env'})
 
-const hostname = process.env.HOSTNAME || '127.0.0.1';
 const port = process.env.PORT || 3001;
 
 const app = express()

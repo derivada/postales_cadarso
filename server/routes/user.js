@@ -75,7 +75,7 @@ router.route("/register").post(async (req, res) => {
 
 async function enviarCorreo(dir, key) {
   // 1. Obtener el link completo de la postal (TODO meter el link de verdad)
-  let link = `http://localhost:3000/postal/${key}`;
+  let link = process.env.FRONTEND_URL + '/postal/' + key
 
   // 2. Obtener el cliente de gmail
   if (client === null) {

@@ -7,6 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// IMPORTANTE: el URL de la API del backend de la aplicación
+const backend_url = 'http://localhost:3001'
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -19,3 +22,5 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+export default backend_url
