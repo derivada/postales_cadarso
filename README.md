@@ -4,7 +4,7 @@ Proyecto web para poder distribuir postales a mis compañero de Cadarso y otros 
 
 Tecnologías usadas: Stack MERN
 
-Frontend: Bootstrap + React, hosteado en Netlify
+Frontend: React + Bootstrap, hosteado en Netlify
 Backend: Node.js + Express, hosteado en Heroku
-Database: MongoDB, hosteado en MongoDB Atlas
+Database: MongoDB con Mongoose, hosteado en MongoDB Atlas
 

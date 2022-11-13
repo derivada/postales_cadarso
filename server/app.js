@@ -22,9 +22,12 @@ app.use(bodyParser.json());
 const users = require('./routes/user')
 app.use('/user', users)
 
+const postales = require('./routes/postal')
+app.use('/postal', postales)
+
+
 // Connect to DB
 const db_access = require('./db/conn')
-
 
 // Setup server
 app.listen(port, () => {

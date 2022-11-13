@@ -30,22 +30,32 @@ const userSchema = new mongoose.Schema({
       }
     },
   },
-  link: {
+  // El key del link a la postal, es temporal (se puede cambiar por otro) hasta que la postal es abierta por 1º vez
+  temp_key: {
     type: String,
     required: false,
   },
-  opened: {
-    type: Boolean,
-    default: false,
+  // El link a la postal definitivo, se registra una vez la postal es abierta
+  final_key: {
+    type: String,
+    required: false
   },
+  // La fecha en la que se abrió la postal
   opened_timestamp: {
     type: Date,
+    required: false
+  },
+  // TODO migrar a otra colección ??
+  postal_body: {
+    type: String,
+    default: null,
     required: false
   }
 }
 );
 
 const User = mongoose.model('usuarios', userSchema);
+
 mongoose.connect(connectionString);
 
-module.exports = User;
+module.exports = {User};
