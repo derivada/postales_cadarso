@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import PostalDisplay from "../components/postal_display/postal_display";
 
 export function Postal() {
   const { key } = useParams();
@@ -10,7 +11,7 @@ export function Postal() {
 
   return (
     <React.Fragment>
-      <h1>Postal key = {key}</h1>;
+      <PostalDisplay postal_key={key}/>
     </React.Fragment>
   );
 }

@@ -3,4 +3,5 @@ client/.env
 server/node_modules
 server/.env
 pwd
+test_data.json
 user_data.json

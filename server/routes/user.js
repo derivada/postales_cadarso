@@ -42,8 +42,8 @@ router.route("/register").post(async (req, res) => {
   let { dir, usuario } = req.body;
   let user = null;
   try {
-    user = await User.findOne({ _id: usuario }).exec();
-    if (user === null) throw new Error("El usuario no existe!");
+    user = await User.findOne({ $and: [{ _id: usuario }, {opened: false}] }).exec();
+    if (user === null) throw new Error();
   } catch (err) {
     console.log("No se pudo encontrar al usuario");
     console.log(err);
@@ -63,11 +63,11 @@ router.route("/register").post(async (req, res) => {
 
   // 2. Generar key del link y guardar email y key en la DB
   user.email = dir;
-  user.temp_key = v4();
+  user.key = v4();
   await user.save();
 
   // 3 Enviar correo con el link
-  let { status, reason } = await enviarCorreo(user.email, user.temp_key);
+  let { status, reason } = await enviarCorreo(user.email, user.key);
 
   // 4. Notificar al usuario (responder al POST)
   res.json({ success: status, reason: reason });

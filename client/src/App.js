@@ -1,5 +1,4 @@
 import React from "react"; 
-import ListaPostales from './components/lista_postales/listaPostales'
 import {Home} from './pages/Home'
 import {Postal} from './pages/Postal'
 import {NotFound} from './pages/NotFound'

@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from "react";
-import PostalCard from "./../postal/postalCard";
+import PostalCard from "../user_card/user_card";
 import BarraBusqueda from "../barra_busqueda/barra_busqueda";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -29,8 +29,6 @@ class ListaPostales extends Component {
   };
 
   componentDidMount() {
-    let a = 123;
-    // TODO backend call para conseguir lista de usuarios
     fetch("http://127.0.0.1:3001/user/list")
       .then((response) => {
         if (!response.ok) {
@@ -95,7 +93,7 @@ class ListaPostales extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        correo: this.state.inputCorreo,
+        dir: this.state.inputCorreo,
         usuario: this.state.usuarioModalCorreo,
       }),
     })

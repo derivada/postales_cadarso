@@ -30,15 +30,16 @@ const userSchema = new mongoose.Schema({
       }
     },
   },
-  // El key del link a la postal, es temporal (se puede cambiar por otro) hasta que la postal es abierta por 1º vez
-  temp_key: {
+  // El key del link a la postal, es temporal (se puede cambiar por otro) hasta que la postal esta abierta
+  key: {
     type: String,
     required: false,
   },
-  // El link a la postal definitivo, se registra una vez la postal es abierta
-  final_key: {
-    type: String,
-    required: false
+  // Indicador de si la postal ya fue abierta
+  opened: {
+    type: Boolean,
+    required: true,
+    default: false
   },
   // La fecha en la que se abrió la postal
   opened_timestamp: {
@@ -48,8 +49,8 @@ const userSchema = new mongoose.Schema({
   // TODO migrar a otra colección ??
   postal_body: {
     type: String,
-    default: null,
-    required: false
+    required: true,
+    default: "Feliz navidad!",
   }
 }
 );
