@@ -6,5 +6,4 @@ Tecnologías usadas: Stack MERN
 
 Frontend: React + Bootstrap, hosteado en Netlify
 Backend: Node.js + Express, hosteado en Heroku
-Database: MongoDB con Mongoose, hosteado en MongoDB Atlas
-
+Database: MongoDB con Mongoose, hosteado en MongoDB Atlas + AWS S3 para imágenes
