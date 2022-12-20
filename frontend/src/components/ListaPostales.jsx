@@ -4,12 +4,10 @@
  */
 
 import React, { Component } from "react";
-import PostalCard from "../user_card/user_card";
-import BarraBusqueda from "../barra_busqueda/barra_busqueda";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { removeAccents } from "../../utils"
+import CardUsuario from "./CardUsuario";
+import BarraBusqueda from "./BarraBusqueda";
+import ModalCorreo from "./ModalCorreo";
+import { removeAccents } from "../utils"
 
 class ListaPostales extends Component {
   constructor(props) {
@@ -29,6 +27,7 @@ class ListaPostales extends Component {
   };
 
   componentDidMount() {
+    // Traer la lista de usuarios del backend
     fetch('/api/user/list')
       .then((response) => {
         if (!response.ok) {
@@ -56,17 +55,16 @@ class ListaPostales extends Component {
   }
 
   filtrarListaPostales = (e) => {
-      const str = removeAccents(e.target.value).replaceAll(' ', '')
-      const filtrados = this.state.usuarios.filter(usuario => removeAccents(usuario.nombre.toLowerCase())
+    const str = removeAccents(e.target.value).replaceAll(' ', '').toLowerCase()
+    const filtrados = this.state.usuarios.filter(usuario => removeAccents(usuario.nombre.toLowerCase())
       .replaceAll(' ', '')
       .includes(str))
-      this.setState({
-        usuariosFiltrados: filtrados
-      })
+    this.setState({
+      usuariosFiltrados: filtrados
+    })
   }
 
   abrirDialogoCorreo(id) {
-    const usuario = this.state.usuarios.filter((usuario) => usuario.id === id);
     this.setState({
       modalCorreoAbierta: true,
       usuarioModalCorreo: id,
@@ -77,13 +75,12 @@ class ListaPostales extends Component {
   cerrarDialogoCorreo = () => {
     this.setState({
       modalCorreoAbierta: false,
+      usuarioModalCorreo: null,
       inputCorreo: null,
     });
   };
 
   enviarCorreo = (event) => {
-    // Correo en this.state.inputCorreo
-    // TODO validar y enviar correo al backend
     event.preventDefault()
     fetch('/api/user/register', {
       method: "POST",
@@ -107,61 +104,30 @@ class ListaPostales extends Component {
   render() {
     return (
       <div className="container my-5">
-        <BarraBusqueda onSearch={this.filtrarListaPostales} placeholder="Buscar postales"/>
+        <BarraBusqueda onSearch={this.filtrarListaPostales} placeholder="Buscar postales" />
         <div className="row" id="postales">
           {this.state.usuariosFiltrados.map((usuario) => (
-            <PostalCard
+            <CardUsuario
               key={"postal" + usuario.id}
               usuario={usuario}
               modalCorreo={this.abrirDialogoCorreo}
             />
           ))}
         </div>
-        <Modal
-          show={this.state.modalCorreoAbierta}
-          onHide={this.cerrarDialogoCorreo}
-        >
-          <Modal.Header>
-            <Modal.Title>
-              <h5>Abrir postal</h5>
-            </Modal.Title>
-          </Modal.Header>
-          <Form
-            controlId="formCorreo"
-            onChange={this.handleInputChange}
-            onSubmit={this.enviarCorreo}
-          >
-            <Modal.Body>
-              {this.explicacionForm()}
-              <Form.Control
-                type="email"
-                size="lg"
-                placeholder="Dirección de correo"
-                autoComplete="username"
-                onChange = {(e) => {
-                  this.setState({
-                    inputCorreo: e.target.value
-                  })
-                }}
-              />
-            </Modal.Body>
-            <Modal.Footer>
-              <Button
-                type="button"
-                variant="secondary"
-                onClick={this.cerrarDialogoCorreo}
-              >
-                Cerrar
-              </Button>
-              <Button type="submit" variant="primary">
-                Enviar correo
-              </Button>
-            </Modal.Footer>
-          </Form>
-        </Modal>
+
+        <ModalCorreo
+          explicacion={this.explicacionForm}
+          isOpen={this.state.modalCorreoAbierta}
+          onClose={this.cerrarDialogoCorreo}
+          onChange={(e) => {
+            this.setState({ inputCorreo: e.target.value })
+          }}
+          onSubmit={this.enviarCorreo}
+        />
       </div>
     );
   }
+
   explicacionForm() {
     return (
       <div>
@@ -183,6 +149,7 @@ class ListaPostales extends Component {
       </div>
     );
   }
+
 }
 
 export default ListaPostales;

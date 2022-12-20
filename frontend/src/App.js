@@ -1,7 +1,7 @@
 import React from "react"; 
-import {Home} from './pages/Home'
-import {Postal} from './pages/Postal'
-import {NotFound} from './pages/NotFound'
+import Home from './pages/Home'
+import Postal from './pages/Postal'
+import NotFound from './pages/NotFound'
 import {Route, Routes} from 'react-router-dom'
 
 function App() {

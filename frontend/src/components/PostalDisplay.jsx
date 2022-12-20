@@ -4,8 +4,9 @@
 
 import React, { Component } from "react";
 
-class PostalDisplay extends Component {
+export default class PostalDisplay extends Component {
   state = {
+    valido: false,
     dedicatoria: null,
     cuerpo: null,
     posdata: null,
@@ -21,8 +22,9 @@ class PostalDisplay extends Component {
         return response.json();
       })
       .then((data) => {
-        if (data.success === false) throw new Error();
+        if (data.success === false) throw new Error("Postal no encontrada");
         this.setState({
+          valido: true,
           dedicatoria: data.dedicatoria,
           cuerpo: data.cuerpo,
           posdata: data.posdata,
@@ -33,15 +35,23 @@ class PostalDisplay extends Component {
         console.log(error);
       });
   }
-
   render() {
-    return <React.Fragment>
-      <h1>{this.state.cuerpo}</h1>
-      <p>{this.state.dedicatoria}</p>
-      <img src={this.state.imagen}></img>
-      <h3>{this.state.posdata}</h3>
-      </React.Fragment>;
+    return(
+    <React.Fragment>
+      {this.state.valido &&
+        <React.Fragment>
+          <h1>{this.state.cuerpo}</h1>
+          <p>{this.state.dedicatoria}</p>
+          <img src={this.state.imagen}></img>
+          <h3>{this.state.posdata}</h3>
+        </React.Fragment>
+      }
+      {!this.state.valido &&
+        <React.Fragment>
+          <h1>Postal no encontrada</h1>
+        </React.Fragment>
+      }
+    </React.Fragment>
+    )
   }
 }
-
-export default PostalDisplay;

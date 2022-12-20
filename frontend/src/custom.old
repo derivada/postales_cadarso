@@ -1,0 +1,22 @@
+/* import only the necessary Bootstrap files */
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+/* -------begin customization-------- */
+/* change the primary theme color to red */
+$primary: #dc3545;
+$theme-colors:(
+    "primary": #41e0d8,
+    "secondary": #6c757d,
+    "success": #28a745,
+    "info": #17a2b8,
+    "warning": #ffc107,
+    "danger": #dc3545,
+    "light": #f8f9fa,
+    "dark": #343a40
+);
+
+
+/* -------end customization-------- *//* finally, import Bootstrap to set the changes! */
+@import "../node_modules/bootstrap/scss/bootstrap";
