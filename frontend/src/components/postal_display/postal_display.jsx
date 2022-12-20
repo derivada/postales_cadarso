@@ -13,7 +13,7 @@ class PostalDisplay extends Component {
   };
 
   componentDidMount() {
-    fetch("/postal/" + this.props.postal_key)
+    fetch("/api/postal/" + this.props.postal_key)
       .then((response) => {
         if (!response.ok) {
           throw new Error("No se recibió un código de respuesta adecuado");

@@ -29,7 +29,7 @@ class ListaPostales extends Component {
   };
 
   componentDidMount() {
-    fetch('/user/list')
+    fetch('/api/user/list')
       .then((response) => {
         if (!response.ok) {
           throw new Error("No se recibió un código de respuesta adecuado");
@@ -85,7 +85,7 @@ class ListaPostales extends Component {
     // Correo en this.state.inputCorreo
     // TODO validar y enviar correo al backend
     event.preventDefault()
-    fetch('/user/register', {
+    fetch('/api/user/register', {
       method: "POST",
       mode: "cors",
       cache: "no-cache",

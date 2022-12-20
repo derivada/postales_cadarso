@@ -26,8 +26,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routes
-app.use('/user', require('./routes/user'))
-app.use('/postal', require('./routes/postal'))
+app.use('/api/user', require('./routes/user'))
+app.use('/api/postal', require('./routes/postal'))
 
 // Serve frontend
 if (process.env.NODE_ENV === 'production') {

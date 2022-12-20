@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
-const connectionString = process.env.DB_URI.replace('<password>', process.env.DB_PWD);
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(connectionString)
+    const conn = await mongoose.connect(process.env.DB_URI)
     console.log(`Connected to MongoDB: ${conn.connection.host}`)
   } catch (error) {
     console.log('Couldn\'t connect to MongoDB!')
