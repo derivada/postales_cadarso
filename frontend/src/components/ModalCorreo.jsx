@@ -27,7 +27,7 @@ export default function ModalCorreo(props) {
                 onSubmit={props.onSubmit} >
                 <Modal.Body>
                     {props.explicacion()}
-                    <Form.Control type="email" size="lg" placeholder="Dirección de correo" autoComplete="username" onChange={props.onChange}/>
+                    <Form.Control type="email" size="lg" placeholder="Dirección de correo" autoComplete="username" onChange={props.onChange} required/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button type="button" variant="secondary" onClick={props.onClose}>
