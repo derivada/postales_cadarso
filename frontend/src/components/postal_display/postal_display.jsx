@@ -3,15 +3,17 @@
  */
 
 import React, { Component } from "react";
-import backend_url from "../..";
 
 class PostalDisplay extends Component {
   state = {
-    postal_body: null,
+    dedicatoria: null,
+    cuerpo: null,
+    posdata: null,
+    imagen: null
   };
 
   componentDidMount() {
-    fetch(backend_url + "/postal/" + this.props.postal_key)
+    fetch("/postal/" + this.props.postal_key)
       .then((response) => {
         if (!response.ok) {
           throw new Error("No se recibió un código de respuesta adecuado");
@@ -21,7 +23,10 @@ class PostalDisplay extends Component {
       .then((data) => {
         if (data.success === false) throw new Error();
         this.setState({
-          postal_body: data.postal_body,
+          dedicatoria: data.dedicatoria,
+          cuerpo: data.cuerpo,
+          posdata: data.posdata,
+          imagen: data.imagen
         });
       })
       .catch((error) => {
@@ -30,7 +35,12 @@ class PostalDisplay extends Component {
   }
 
   render() {
-    return <h1>{this.state.postal_body}</h1>;
+    return <React.Fragment>
+      <h1>{this.state.cuerpo}</h1>
+      <p>{this.state.dedicatoria}</p>
+      <img src={this.state.imagen}></img>
+      <h3>{this.state.posdata}</h3>
+      </React.Fragment>;
   }
 }
 

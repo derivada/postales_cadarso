@@ -10,7 +10,6 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { removeAccents } from "../../utils"
-import backend_url from "../..";
 
 class ListaPostales extends Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class ListaPostales extends Component {
   };
 
   componentDidMount() {
-    fetch(backend_url + '/user/list')
+    fetch('/user/list')
       .then((response) => {
         if (!response.ok) {
           throw new Error("No se recibió un código de respuesta adecuado");
@@ -86,7 +85,7 @@ class ListaPostales extends Component {
     // Correo en this.state.inputCorreo
     // TODO validar y enviar correo al backend
     event.preventDefault()
-    fetch(backend_url + '/user/register', {
+    fetch('/user/register', {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
