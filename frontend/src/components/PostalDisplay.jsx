@@ -40,8 +40,8 @@ export default class PostalDisplay extends Component {
     <React.Fragment>
       {this.state.valido &&
         <React.Fragment>
-          <h1>{this.state.cuerpo}</h1>
-          <p>{this.state.dedicatoria}</p>
+          <h1>{this.state.dedicatoria}</h1>
+          <p>{this.state.cuerpo}</p>
           <img src={this.state.imagen}></img>
           <h3>{this.state.posdata}</h3>
         </React.Fragment>
