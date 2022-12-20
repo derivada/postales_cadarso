@@ -15,7 +15,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
         trim: true,
-        lowercase: true,
         validate(value) {
             if (!validator.isEmail(value)) {
                 throw new Error('Invalid email');
@@ -38,29 +37,18 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required: false
     },
-    // TODO migrar a otra colección ??
-    postal_body: {
-        type: String,
-        required: true,
-        default: "Feliz navidad!",
-    },
+    // Los siguientes campos contienen la postal en sí. Dedicatoria, cuerpo y posdata son HTML, imagen es la URL de la imagen
     dedicatoria: {
         type: String,
-        required: true,
-        default: "Querido cadarsino!",
     },
     cuerpo: {
         type: String,
-        required: true,
-        default: "Feliz navidad!",
     },
     posdata: {
         type: String,
-        required: false,
     },
     imagen: {
         type: String,
-        required: false,
     },
 }
 );
