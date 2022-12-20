@@ -1,8 +1,8 @@
 const nodemailer = require('nodemailer');
 
-async function enviarCorreo(dir, key) {
+async function enviarCorreo(req, dir, key) {
     // 1. Obtener el link completo de la postal (TODO deployment)
-    let link = '/postal/' + key
+    let link = req.protocol + "://" + req.hostname + '/postal/' + key
     try {
         // 2. Configurar el transporter
         let transporter = nodemailer.createTransport({

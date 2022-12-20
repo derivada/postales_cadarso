@@ -50,7 +50,7 @@ const registerUser = async (req, res) => {
     await user.save();
 
     // 3 Enviar correo con el link
-    let { status, reason } = await enviarCorreo(user.email, user.key);
+    let { status, reason } = await enviarCorreo(req, user.email, user.key);
 
     // 4. Notificar al usuario (responder al POST)
     res.json({ success: status, reason: reason });
