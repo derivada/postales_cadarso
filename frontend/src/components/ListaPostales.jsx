@@ -103,7 +103,7 @@ class ListaPostales extends Component {
 
   render() {
     return (
-      <div className="container my-5">
+      <div className="container mt-5">
         <BarraBusqueda onSearch={this.filtrarListaPostales} placeholder="Buscar postales" />
         <div className="row" id="postales">
           {this.state.usuariosFiltrados.map((usuario, i) => (

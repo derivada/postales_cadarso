@@ -24,7 +24,7 @@ return (
         </div>
         <ListaPostales/>
       </div>
-      <Carousel fade interval={10000} keyboard wrap className="backgroundContent">
+      <Carousel fade interval={10000} keyboard wrap className="bgcarousel">
           <Carousel.Item>
             <img className="d-block w-100" src="cadarso1.jpg" alt="cadars dia"/>
           </Carousel.Item>

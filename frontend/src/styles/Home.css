@@ -4,6 +4,8 @@
 }
 
 .navbar-bg {
+    background-image: radial-gradient(#de1a1a, #A01313);
+    background-image: -webkit-radial-gradient(center, ellipse cover, #de1a1a 0%, #A01313 100%);
     background-image: -moz-radial-gradient(center, ellipse cover, #de1a1a 0%, #A01313 100%);
     color: rgb(121, 152, 179);
 }
@@ -29,15 +31,32 @@
     font-size: 20px;
     font-style: italic;
 }
+/* PCs */
+@media screen and (min-width: 729px){
 
-.mainContent {
-    position: absolute;
-    z-index: 999;
+    .mainContent {
+        position: absolute;
+        z-index: 999;
+    }
+
+    .bgcarousel {
+        position: absolute;
+        z-index: -999;
+        filter: blur(2px);
+        height: 100%;
+        background-repeat: repeat-y;
+    }
 }
 
-.backgroundContent {
-    position: absolute;
-    z-index: -999;
-    filter: blur(2px);
-    size: 1000%;
+/* Móviles */
+@media screen and (max-width: 728px){
+    .mainContent {
+        background-image: url('./../../public/cadarso1.jpg');
+        background-repeat: repeat-y;
+        background-position: center;
+    }
+
+    .bgcarousel {
+        display: none;
+    }
 }
