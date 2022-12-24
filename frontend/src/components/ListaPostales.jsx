@@ -106,11 +106,15 @@ class ListaPostales extends Component {
       <div className="container my-5">
         <BarraBusqueda onSearch={this.filtrarListaPostales} placeholder="Buscar postales" />
         <div className="row" id="postales">
-          {this.state.usuariosFiltrados.map((usuario) => (
+          {this.state.usuariosFiltrados.map((usuario, i) => (
             <CardUsuario
               key={"postal" + usuario.id}
               usuario={usuario}
               modalCorreo={this.abrirDialogoCorreo}
+              color={{
+                active: i % 2 === 0 ? "red-active" : "green-active",
+                inactive: i % 2 === 0 ? "red-inactive" : "green-inactive",
+              }}
             />
           ))}
         </div>

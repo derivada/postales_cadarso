@@ -1,0 +1,38 @@
+.user-card{
+    box-shadow: 2px 2px 10px rgb(36, 36, 36);
+}
+
+.red-active{
+    background-color: #de1a1a !important;
+}
+
+.green-active{
+    background-color: #27b027 !important;
+}
+
+.red-inactive{ 
+    background-color: #9e4040 !important;
+}
+
+.green-inactive{
+    background-color: #44a044 !important;
+}
+
+.card-button.red-active{
+    border: #ac1212 2px solid;
+}
+
+.card-button.green-active{
+    border: #1a7d1a 2px solid;
+}
+
+.card-button.red-active:hover{
+    background-color: #ac1212 !important;
+    border: #ac1212 2px solid;
+}
+
+.card-button.green-active:hover{
+    background-color: #1a7d1a !important;
+    border: #1a7d1a 2px solid;
+}
+

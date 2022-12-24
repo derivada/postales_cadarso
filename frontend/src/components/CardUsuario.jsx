@@ -3,34 +3,37 @@
  */
 
 import React from "react";
+import "../styles/CardUsuario.css";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/esm/Button";
 
 export default function CardUsuario(props) {
-    return (
-      <div className="col-sm-6 col-md-4 col-lg-3 ">
-        <div className="card text-white m-3 border border-secondary rounded">
-        {props.usuario.abierto === true && (
-          <div className="card-header d-flex bg-secondary align-items-center">
-            <h5 className="card-title mt-1">{props.usuario.nombre}</h5>
-          </div>
-        )}
+  return (
+    <div className="col-sm-6 col-md-4 col-lg-3">
+      <Card className="text-white m-3 rounded user-card">
         {props.usuario.abierto === false && (
-          <div className="card-header d-flex bg-primary align-items-center">
-           <h5 className="card-title mt-1">{props.usuario.nombre}</h5>
-          </div>
+          <Card.Header className={`${props.color.active}`}>
+            <Card.Title className="mt-1">{props.usuario.nombre}</Card.Title>
+          </Card.Header>
         )}
-
-          <div className="card-body bg-white p-3 m-1">
-            {props.usuario.abierto === true && (
-              <button className="btn btn-lg btn-secondary text-faded disabled boton_navidad">
-                Abierto
-              </button>
-            )}
-            {props.usuario.abierto === false && (
-              <button onClick={() => props.modalCorreo(props.usuario.id)}
-                className="btn btn-lg btn-primary">Abrir postal</button>
-            )}
-          </div>
-        </div>
-      </div>
-    );
+        {props.usuario.abierto === true && (
+          <Card.Header className={`${props.color.inactive}`}>
+            <Card.Title className="mt-1">{props.usuario.nombre}</Card.Title>
+          </Card.Header>
+        )}
+        <Card.Body className="bg-white p-3 m-1">
+          {props.usuario.abierto === true && (
+            <Button variant="secondary" size="large" disabled className={`${props.color.inactive} card-button`}>
+              Abierto
+            </Button>
+          )}
+          {props.usuario.abierto === false && (
+            <Button variant="primary" size="large" onClick={() => props.modalCorreo(props.usuario.id)} className={`${props.color.active} card-button`}>
+              Abrir postal
+            </Button>
+          )}
+        </Card.Body>
+      </Card>
+    </div>
+  );
 }

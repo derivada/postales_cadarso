@@ -1,0 +1,41 @@
+.postal{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+    height: 1000px;
+}
+
+.background-img {
+    z-index: -1;
+    position: absolute;
+    height: 1000px;
+    border: 5px solid #000000;
+    border-radius: 10px;
+}
+
+.postal-body{
+    font-size: 2rem;
+}
+
+.postal-dedicatoria{
+    font-size: 4rem;
+}
+
+.postal-cuerpo{
+
+}
+
+.postal-posdata{
+    font-style: italic;
+}
+
+.postal-autor{
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+.postal-imagen{
+    border-radius: 10px;
+    border: 3px solid #e4e4e4;
+}

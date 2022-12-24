@@ -39,4 +39,5 @@
     position: absolute;
     z-index: -999;
     filter: blur(2px);
+    size: 1000%;
 }
