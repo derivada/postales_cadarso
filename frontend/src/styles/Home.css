@@ -1,0 +1,42 @@
+.navbar-text {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.navbar-bg {
+    background-image: -moz-radial-gradient(center, ellipse cover, #de1a1a 0%, #A01313 100%);
+    color: rgb(121, 152, 179);
+}
+
+.title {
+    color: white;
+    padding: 0px 10px 0px 10px;
+    border-top: white 2px solid;
+    border-bottom: white 2px solid;
+}
+
+.title-text{
+    font-size: 60px;
+}
+
+#subtitle {
+    background-color: rgba(255, 255, 255, 0.676);
+    border-bottom: #A01313 2px solid;
+    font-size: 20px;
+}
+
+.author{
+    font-size: 20px;
+    font-style: italic;
+}
+
+.mainContent {
+    position: absolute;
+    z-index: 999;
+}
+
+.backgroundContent {
+    position: absolute;
+    z-index: -999;
+    filter: blur(2px);
+}
