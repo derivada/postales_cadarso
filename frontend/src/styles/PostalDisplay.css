@@ -1,41 +1,58 @@
-.postal{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    z-index: 1;
-    height: 1000px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Caramel&display=swap');
 
-.background-img {
-    z-index: -1;
-    position: absolute;
-    height: 1000px;
-    border: 5px solid #000000;
+.postal{
+    background: linear-gradient(45deg, #4a62e9, #11045c);
+    border-radius: 10px;
+
+}
+.postalWrapper{
+    background-image: url('./../../public/paper.png');
+    background-repeat: repeat;
     border-radius: 10px;
 }
 
-.postal-body{
-    font-size: 2rem;
+.pag-izqda {
+    width: 50%;
+    text-align: left;
+}
+
+.pag-dcha {
+    width: 50%;
+}
+
+.pag-izq {
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    font-size: 20px;
+    text-align: right;
+    margin-right: 10px; 
+}
+
+.pag-dcha {
+    padding: 20px;
 }
 
 .postal-dedicatoria{
     font-size: 4rem;
+    font-family: 'Caramel', cursive;
 }
 
 .postal-cuerpo{
-
+    font-size: 1rem;
 }
-
-.postal-posdata{
-    font-style: italic;
-}
-
-.postal-autor{
+.postal-posdata {
     font-size: 1.5rem;
     font-style: italic;
 }
 
-.postal-imagen{
+.postal-autor {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.postal-imagen {
     border-radius: 10px;
-    border: 3px solid #e4e4e4;
+    border: 3px solid #616161;
+    width: 80%;
 }

@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
+import parse from 'html-react-parser';
+import DOMPurify from 'dompurify';
 import html2pdf from "html2pdf.js";
 
 import "./../styles/PostalDisplay.css";
@@ -18,6 +20,7 @@ export default class PostalDisplay extends Component {
     super(props);
     this.refPostal = React.createRef();  
     this.descargar = this.descargar.bind(this)
+    this.htmlFrom = this.htmlFrom.bind(this)
   }
 
   state = {
@@ -52,7 +55,6 @@ export default class PostalDisplay extends Component {
   }
 
   descargar() {
-
     const opt = {
       margin: 1,
       filename: 'postal.pdf',
@@ -64,6 +66,15 @@ export default class PostalDisplay extends Component {
     html2pdf().set(opt).from(this.refPostal.current.innerHTML).save();
   }
 
+
+  htmlFrom = (htmlString) => {
+    const cleanHtmlString = DOMPurify.sanitize(htmlString,
+      { USE_PROFILES: { html: true } });
+    const html = parse(cleanHtmlString);
+    return html;
+  }
+
+
   render() {
     return (
       <React.Fragment>
@@ -72,26 +83,24 @@ export default class PostalDisplay extends Component {
             <Button className="m-2" variant="outline-primary" size="lg" onClick={this.descargar}>
               Descargar Postal
             </Button>
-            <div className="m-5 postal" ref={this.refPostal}>
-              <img className="background-img" src="./../paper_texture.jpg" alt="textura fondo postal" />
-              <Container className="postal-body">
+              <Container className="postal" ref={this.refPostal}>
+              <Container className="postalWrapper">
                 <Row>
-                  <Col className="pag-izq mr-3">
-
+                  <Col md={5} className="pag-izq">
                     <h1 className="postal-dedicatoria">
-                      <span style={{ 'font-size': '6rem' }}> {this.state.dedicatoria[0]} </span>
-                      {this.state.dedicatoria.substring(1)}
+                      <span style={{ 'font-size': '8rem' }}> {this.htmlFrom(this.state.dedicatoria[0])} </span>
+                      {this.htmlFrom(this.state.dedicatoria.substring(1))}
                     </h1>
-                    <p className="postal-cuerpo">{this.state.cuerpo}</p>
-                    <h3 className="postal-posdata">{this.state.posdata}</h3>
+                    <p className="postal-cuerpo">{this.htmlFrom(this.state.cuerpo)}</p>
+                    <h3 className="postal-posdata">{this.htmlFrom(this.state.posdata)}</h3>
                     <h6 className="postal-autor">Pablo</h6>
                   </Col>
-                  <Col className="pag-dcha ml-3">
+                  <Col md={5} className="pag-dcha" align="center">
                     <img src={this.state.imagen} className="postal-imagen"></img>
                   </Col>
-                </Row>
+                  </Row>
               </Container>
-            </div>
+              </Container>
           </React.Fragment>
         }
         {!this.state.valido &&

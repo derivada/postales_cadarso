@@ -24,8 +24,9 @@ const registerUser = async (req, res) => {
     // 1. Validar request y correo
     let { dir, usuario } = req.body;
     let user = null;
+    console.log(`registering user with id= ${usuario} and email=${dir}`)
     try {
-        user = await User.findOne({ $and: [{ _id: usuario }, { opened: false }] }).exec();
+        user = await User.findOne({ $and: [{ _id: usuario }, {$not: { opened: true } }] }).exec();
         if (user === null) throw new Error();
     } catch (err) {
         console.log('No se pudo encontrar al usuario');
