@@ -11,7 +11,7 @@ return (
           <div className="title">
             <h1 className="text-white title-text">🎄Postales Cadarso 2022🎄</h1>
           </div>
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a href="https://github.com/derivada/postales_cadarso" target="_blank" rel="noreferrer">
             <img height="50" src="github-mark-white.png" alt="logo github"></img>
           </a>
         </div>

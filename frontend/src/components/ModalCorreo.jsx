@@ -10,6 +10,7 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import "./../styles/ModalCorreo.css";
 
 export default function ModalCorreo(props) {
     return (
@@ -18,7 +19,7 @@ export default function ModalCorreo(props) {
             onHide={props.onClose}>
             <Modal.Header>
                 <Modal.Title>
-                    <h5>Abrir postal</h5>
+                    <h3>✉️Abrir postal✉️</h3>
                 </Modal.Title>
             </Modal.Header>
             <Form
@@ -33,7 +34,7 @@ export default function ModalCorreo(props) {
                     <Button type="button" variant="secondary" onClick={props.onClose}>
                         Cerrar
                     </Button>
-                    <Button type="submit" variant="primary">
+                    <Button type="submit" variant="primary" className="enviarCorreo">
                         Enviar correo
                     </Button>
                 </Modal.Footer>

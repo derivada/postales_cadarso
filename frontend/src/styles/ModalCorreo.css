@@ -1,0 +1,10 @@
+.enviarCorreo{
+    background-color: #dc4a4a;
+    border: #ae3535 1px solid !important;
+}
+
+.enviarCorreo:hover {
+    background-color: #ae3535;
+    border: #ae3535 1px solid !important;
+
+}

@@ -142,9 +142,9 @@ class ListaPostales extends Component {
           <li>Abrir el enlace que se te mandará por correo</li>
         </ol>
         <p>
-          Una vez el enlace de la postal haya sido abierto, este formulario se
+        <b>Una vez el enlace de la postal haya sido abierto, este formulario se
           cerrará y ningún otro usuario podrá introducir su correo aquí para
-          poder ver tu postal!
+          poder ver tu postal!</b>
         </p>
         <p>
           Por supuesto, el enlace enviado a tu correo seguirá funcionando, pero
