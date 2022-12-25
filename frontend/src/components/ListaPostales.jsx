@@ -45,8 +45,8 @@ class ListaPostales extends Component {
           });
         }
         this.setState({
-          usuarios: usuarios,
-          usuariosFiltrados: usuarios
+          usuarios: usuarios.sort((a, b) => a.nombre.localeCompare(b.nombre)),
+          usuariosFiltrados: usuarios.sort((a, b) => a.nombre.localeCompare(b.nombre)),
         });
       })
       .catch((error) => {
@@ -60,7 +60,7 @@ class ListaPostales extends Component {
       .replaceAll(' ', '')
       .includes(str))
     this.setState({
-      usuariosFiltrados: filtrados
+      usuariosFiltrados: filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre)),
     })
   }
 
