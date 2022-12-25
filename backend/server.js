@@ -9,27 +9,25 @@ require('dotenv').config({ path: __dirname + '/.env' })
 
 const port = process.env.PORT || 3001;
 
-// Initialize server
+// Definir servidor y conectar a la DB
 const app = express()
-
-// Connect to database
 connectDB()
 
-// Use express and enable CORS
+// Usar express con CORS
 app.use(express.json())
 app.use(cors({
-    origin: '*' // TODO: change to ENV, this should be the client URL
+    origin: '*'
 }))
 
-// Parse body of requests to JSON
+// Parsear requests a JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Routes
+// Rutas
 app.use('/api/user', require('./routes/user'))
 app.use('/api/postal', require('./routes/postal'))
 
-// Serve frontend
+// Ruta para producción
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../frontend/build')));
 
@@ -45,5 +43,5 @@ if (process.env.NODE_ENV === 'production') {
 // Error handling
 app.use(errorHandler);
 
-// Start server
+// Iniciar servidor
 app.listen(port, () => console.log(`Server started on port ${port}`));

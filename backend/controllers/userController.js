@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
     // 1. Validar request y correo
     let { dir, usuario } = req.body;
     let user = null;
-    console.log(`registering user with id= ${usuario} and email=${dir}`)
+    console.log(`Registrando usuario con id=${usuario} y mail=${dir}`)
     try {
         user = await User.findOne({ $and: [{ _id: usuario }, {$not: { opened: true } }] }).exec();
         if (user === null) throw new Error();
@@ -44,17 +44,19 @@ const registerUser = async (req, res) => {
         });
         return;
     }
-
+    
     // 2. Generar key del link y guardar email y key en la DB
+    console.log('Generando key')
     user.email = dir;
     user.key = v4();
     await user.save();
-
+    console.log('Enviando correo')
     // 3 Enviar correo con el link
     let { status, reason } = await enviarCorreo(req, user.email, user.key);
 
     // 4. Notificar al usuario (responder al POST)
     res.json({ success: status, reason: reason });
+    console.log('Usuario registrado!')
 }
 
 module.exports = { getUserList, registerUser }

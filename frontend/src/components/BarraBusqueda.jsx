@@ -1,7 +1,7 @@
 /**
  * Componente para la busqueda y filtrado dinámico en una lista de texto
  * 
- * Pasar props: 
+ * Props: 
  *  placeholder -> texto usado como placeholder cuando no hay nada
  *  onSearch -> llamado cuando se actualize el filtro
  */

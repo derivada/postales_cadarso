@@ -1,3 +1,7 @@
+/**
+ * Página principal de la web
+ */
+
 import React from "react";
 import ListaPostales from "../components/ListaPostales";
 import "./../styles/Home.css";
@@ -12,12 +16,12 @@ return (
             <h1 className="text-white title-text">🎄Postales Cadarso 2022🎄</h1>
           </div>
           <a href="https://github.com/derivada/postales_cadarso" target="_blank" rel="noreferrer">
-            <img height="50" src="github-mark-white.png" alt="logo github"></img>
+            <img height="50" src="github.png" alt="logo github"></img>
           </a>
         </div>
       </div>
       <div className="mainContent">
-        <div className="p-3" id="subtitle">
+        <div className="p-3 subtitle">
           <p>Hola! Bienvenido a esta página para pasaros mis postales de Navidad de este año. Como estoy en Noruega de Erasmus no pude haceros
             a todos una postal escrita, así que decidí crear esta web para ello (y para aprender a hacer una de paso). Espero que os gusten mucho! </p>
           <p className="author">Pablo</p>

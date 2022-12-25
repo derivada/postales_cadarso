@@ -1,6 +1,6 @@
 /**
  * Componente para la lista general de postales, guarda estado sobre cada postal
- *
+ * 
  */
 
 import React, { Component } from "react";
@@ -26,8 +26,9 @@ class ListaPostales extends Component {
     inputCorreo: null,
   };
 
+  // Traer la lista de usuarios del backend
   componentDidMount() {
-    // Traer la lista de usuarios del backend
+    console.log('Obteniendo lista de usuarios')
     fetch('/api/user/list')
       .then((response) => {
         if (!response.ok) {
@@ -63,6 +64,7 @@ class ListaPostales extends Component {
       usuariosFiltrados: filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre)),
     })
   }
+  
 
   abrirDialogoCorreo(id) {
     this.setState({
@@ -81,6 +83,7 @@ class ListaPostales extends Component {
   };
 
   enviarCorreo = (event) => {
+    // Enviar el correo al backend para registrarlo
     event.preventDefault()
     fetch('/api/user/register', {
       method: "POST",

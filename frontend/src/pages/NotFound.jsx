@@ -1,3 +1,7 @@
+/**
+ * Página de error 404
+ */
+
 import React from "react";
 
 export default function NotFound() {

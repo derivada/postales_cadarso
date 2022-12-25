@@ -18,20 +18,21 @@
 }
 
 .title-text{
-    font-size: 60px;
+    font-size: 2rem;
 }
 
-#subtitle {
+.subtitle {
     background-color: rgba(255, 255, 255, 0.676);
     border-bottom: #A01313 2px solid;
-    font-size: 20px;
+    font-size: 1.1rem;
 }
 
 .author{
-    font-size: 20px;
+    font-size: 1rem;
     font-style: italic;
 }
-/* PCs */
+
+/* Layout PCs */
 @media screen and (min-width: 729px){
 
     .mainContent {
@@ -48,7 +49,7 @@
     }
 }
 
-/* Móviles */
+/* Layout Móviles */
 @media screen and (max-width: 728px){
     .mainContent {
         background-image: url('./../../public/cadarso1.jpg');

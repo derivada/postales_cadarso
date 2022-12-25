@@ -6,7 +6,7 @@
 
 }
 .postalWrapper{
-    background-image: url('./../../public/paper.png');
+    background-image: url('./../../public/bg.png');
     background-repeat: repeat;
     border-radius: 10px;
 }
@@ -24,7 +24,6 @@
     width: 50%;
     height: 100%;
     padding: 20px;
-    font-size: 20px;
     text-align: right;
     margin-right: 10px; 
 }

@@ -1,5 +1,8 @@
 /**
  * Componente para el recuadro de postal de un usuario
+ * 
+ * Props:
+ * postal_key -> clave de la postal
  */
 
 import React, { Component } from "react";
@@ -15,7 +18,7 @@ import html2pdf from "html2pdf.js";
 import "./../styles/PostalDisplay.css";
 
 export default class PostalDisplay extends Component {
-  
+
   constructor(props) {
     super(props);
     this.refPostal = React.createRef();  
@@ -66,6 +69,9 @@ export default class PostalDisplay extends Component {
     html2pdf().set(opt).from(this.refPostal.current.innerHTML).toImg().save();
   }
 
+  volver(){
+
+  }
 
   htmlFrom = (htmlString) => {
     const cleanHtmlString = DOMPurify.sanitize(htmlString,
@@ -88,7 +94,7 @@ export default class PostalDisplay extends Component {
                 <Row>
                   <Col md={5} className="pag-izq">
                     <h1 className="postal-dedicatoria">
-                      <span style={{ 'font-size': '8rem' }}> {this.htmlFrom(this.state.dedicatoria[0])} </span>
+                      <span style={{ fontSize: '8rem' }}> {this.htmlFrom(this.state.dedicatoria[0])} </span>
                       {this.htmlFrom(this.state.dedicatoria.substring(1))}
                     </h1>
                     <p className="postal-cuerpo">{this.htmlFrom(this.state.cuerpo)}</p>
@@ -101,11 +107,6 @@ export default class PostalDisplay extends Component {
                   </Row>
               </Container>
               </Container>
-          </React.Fragment>
-        }
-        {!this.state.valido &&
-          <React.Fragment>
-            <h1>Postal no encontrada</h1>
           </React.Fragment>
         }
       </React.Fragment>

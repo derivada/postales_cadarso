@@ -3,6 +3,7 @@ let router = express.Router();
 
 const { getPostal } = require("../controllers/postalController");
 
+// api/postal/:key
 router.route("/:key").get(getPostal);
 
-module.exports = router; // Objeto router usado en app.js para redirigir las rutas aquí
+module.exports = router;

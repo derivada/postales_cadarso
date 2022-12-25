@@ -1,9 +1,12 @@
 /**
  * Componente para la modal en la que el usuario introduce el correo
  * 
- * Pasar props: 
- *  placeholder -> texto usado como placeholder cuando no hay nada
- *  onSearch -> llamado cuando se actualize el filtro
+ * Props: 
+ *  onChange -> llamado cuando se actualiza el texto introducido en el input
+ *  onSubmit -> llamado cuando se envía el formulario
+ *  isOpen -> booleano que indica si la modal está abierta o no
+ *  onClose -> llamado cuando se cierra la modal
+ *  explicacion -> función que devuelve el texto de la modal
  */
 
 import React from "react";

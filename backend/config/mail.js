@@ -174,15 +174,15 @@ async function enviarCorreo(req, dir, key) {
             subject: 'Link postal Cadarso',
             text: 'Hola! Abre el correo para poder leer tu postal :)',
             html: html,
-        };
-        const result = await transporter.sendMail(mailOptions);
-        console.log('Correo enviado!');
+        }
+        const result = await transporter.sendMail(mailOptions)
+        console.log('Correo enviado!')
         console.log(result);
-        return { status: true, reason: null };
+        return { status: true, reason: null }
     } catch (err) {
-        console.log('Error al enviar correo');
-        console.log(err);
-        return { status: false, reason: 'El servidor no pudo enviar el correo!' };
+        console.log('Error al enviar correo')
+        console.log(err)
+        return { status: false, reason: 'El servidor no pudo enviar el correo!' }
     }
 }
 

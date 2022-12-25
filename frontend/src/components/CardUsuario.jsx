@@ -1,5 +1,9 @@
 /**
  * Componente para el recuadro de postal de un usuario
+ * 
+ * Props:
+ * postal_key -> clave de la postal
+ * 
  */
 
 import React from "react";
